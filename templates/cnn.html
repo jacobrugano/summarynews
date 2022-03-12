@@ -1,0 +1,26 @@
+cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url,cnn_author,cnn_content
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <div>
+            <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
+            {% for cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url,cnn_author,cnn_content %}
+            <div>
+                <div><h2>{{cnn_title}}</h2></a></div>
+                <div><a href="{{cnn_news_url}}"><img src="{{cnn_image}}"></a></div>
+                <div class="content"><p>{{cnn_descriptions}}</p></div>
+                <div class="content"><p>Publication date:-</p><p> {{cnn_publication_date}} </p></div>
+                <div>Published by: <p>"{{cnn_author}}"</p></div>
+            </div> 
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
