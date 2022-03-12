@@ -6,19 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
-        <!-- {% for title,descriptions,image,publication_date,news_url in all %} -->
-        {% for title,author,descriptions,image,publication_date,news_url,content in headlines %}
+    <section>
         <div>
-            <div><a href="{{news_url}}"><img src="{{image}}"></a></div>
-            <div><a href="{{news_url}}"><h2>{{title}}</h2></a></div>
-            <div class="content"><p>{{descriptions}}</p></div>
-            <div class="content"><p>Publication date:-</p><p> {{publication_date}} </p></div>
-            <div>Published by: <p>"{{author}}"</p></div>
-            </div>
+            <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
+            {% for title,author,descriptions,image,publication_date,news_url,content in headlines %}
+            <div>
+                <div><a href="{{news_url}}"><img src="{{image}}"></a></div>
+                <div><a href="{{news_url}}"><h2>{{title}}</h2></a></div>
+                <div class="content"><p>{{descriptions}}</p></div>
+                <div class="content"><p>Publication date:-</p><p> {{publication_date}} </p></div>
+                <div>Published by: <p>"{{author}}"</p></div>
             </div> 
-        {% endfor %}
-    </div> 
+            {% endfor %}
+        </div>
+    </section>
 </body>
 </html>
