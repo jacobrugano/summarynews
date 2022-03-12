@@ -46,30 +46,36 @@ def index():
         content.append(main_highlight['content'])
 
 
-#To store the contents gotten above.
+        '''
+        To store the contents gotten above.
+        '''
         headlines = zip(title,author,descriptions,image,publication_date,news_url,content)
     return render_template('home.html', headlines = headlines)
 
 
-#Creating a route function @approute and rendering the html template.
+'''
+Creating a route function @approute and rendering the html template.
+'''
 @app.route("/cnn")
 def cnn():
 
     newsapi = NewsApiClient(api_key="44216e90102b4e7bbc548343f8cdc3ea")
 
-#Code-block for getting the top stories from the API
+    ''' 
+    Code-block for getting the top stories from the API
+    '''
     ctop_headlines = newsapi.get_top_headlines(sources = "cnn") #source to help us from where to get the news by API.
 
-#code-block to fetch headlines
+    ''' 
+    code-block to fetch headlines
+    '''
     c_articles = ctop_headlines['articles']
 
 
-#We make a list of the items to display on our application
-    cnews = []
-    cdesc = []
-    cimg = []
-    cp_date = []
-    curl = []
+    '''
+    We make a list of the items to display on our application
+    '''
+
     cnn_title = []
     cnn_author = []
     cnn_descriptions = []
@@ -78,18 +84,24 @@ def cnn():
     cnn_news_url = []
     cnn_content= []
 
-#Code block using a for-loop to fetch the contents of articles.
+    '''
+    Code block using a for-loop to fetch the contents of articles.
+    '''
     for i in range(len(c_articles)): 
         cmain_article = c_articles[i]
 
-        cnews.append(cmain_article['title'])  #To append the title into the list.
-        cdesc.append(cmain_article['description'])  #To append the description into the list.
-        cimg.append(cmain_article['urlToImage'])  #Append the urlToImage into the list.
-        cp_date.append(cmain_article['publishedAt'])  #Append the published date into the list.
-        curl.append(cmain_article['url'])  #Append the url into the list.
+        cnn_title.append(cmain_article['title'])  #To append the title into the list.
+        cnn_descriptions.append(cmain_article['description'])  #To append the description into the list.
+        cnn_image.append(cmain_article['urlToImage'])  #Append the urlToImage into the list.
+        cnn_publication_date.append(cmain_article['publishedAt'])  #Append the published date into the list.
+        cnn_news_url.append(cmain_article['url'])  #Append the url into the list.
+        cnn_author.append(cmain_article['author']) 
+        cnn_content.append(cmain_article['content']) 
 
-#To store the contents gotten above.
-        cnn_contents = zip(cnews, cdesc,cimg,cp_date,curl)
+        '''
+        To store the contents gotten above.
+        '''
+        cnn_contents = zip(cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url,cnn_author,cnn_content)
         return render_template('cnn.html', cnn_contents=cnn_contents)
 
 
