@@ -64,25 +64,24 @@ def cnn():
     ''' 
     Code-block for getting the top stories from the API
     '''
-    ctop_headlines = newsapi.get_top_headlines(sources = "cnn") #source to help us from where to get the news by API.
+    all_articles = newsapi.get_everything(sources = 'cnn') #source to help us from where to get the news by API.
 
     ''' 
     code-block to fetch headlines
     '''
-    c_articles = ctop_headlines['articles']
-
-
+    c_articles = all_articles['articles']
+    
     '''
     We make a list of the items to display on our application
     '''
 
     cnn_title = []
-    cnn_author = []
+    # cnn_author = []
     cnn_descriptions = []
     cnn_image = []
     cnn_publication_date = []
     cnn_news_url = []
-    cnn_content= []
+    # cnn_content= []
 
     '''
     Code block using a for-loop to fetch the contents of articles.
@@ -95,14 +94,14 @@ def cnn():
         cnn_image.append(cmain_article['urlToImage'])  #Append the urlToImage into the list.
         cnn_publication_date.append(cmain_article['publishedAt'])  #Append the published date into the list.
         cnn_news_url.append(cmain_article['url'])  #Append the url into the list.
-        cnn_author.append(cmain_article['author']) 
-        cnn_content.append(cmain_article['content']) 
+        # cnn_author.append(cmain_article['author']) 
+        # cnn_content.append(cmain_article['content']) 
 
         '''
         To store the contents gotten above.
         '''
-        cnn_contents = zip(cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url,cnn_author,cnn_content)
-        return render_template('cnn.html', cnn_contents=cnn_contents)
+        ccontents = zip(cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url)
+        return render_template('cnn.html', ccontents=ccontents)
 
 
 
