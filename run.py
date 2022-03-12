@@ -17,19 +17,35 @@ def index():
     Code to get the summary of top headlines
     '''
     topheadlines = newsapi.get_top_headlines(sources = "bbc-news") #source to help us from where to get the news by API.
-    top_articles = topheadlines['articles']
+    top_highlights = topheadlines['articles']
 
     '''
     A list of the items to display on our application
     '''
-    news = []
+    title = []
+    author = []
     descriptions = []
     image = []
     publication_date = []
     news_url = []
 
 
+    '''
+    Code block using a for-loop to fetch the contents of articles.
+    '''
+    for i in range(len(top_highlights)): 
+        main_highlight = top_highlights[i]
 
-    
+        title.append(main_highlight['title'])  #To append the title into the list.
+        author.append(main_highlight['author'])
+        descriptions.append(main_highlight['description'])  #To append the description into the list.
+        image.append(main_highlight['urlToImage'])  #Append the urlToImage into the list.
+        publication_date.append(main_highlight['publishedAt'])  #Append the published date into the list.
+        news_url.append(main_highlight['url'])  #Append the url into the list.
+
+#To store the contents gotten above.
+        contents = zip(news, descriptions,image,publication_date,news_url)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
