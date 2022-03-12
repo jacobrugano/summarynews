@@ -47,8 +47,9 @@ def index():
 
 
 #To store the contents gotten above.
-        headlines = zip(title, author, descriptions,image,publication_date,news_url, content)
+        headlines = zip(title,author,descriptions,image,publication_date,news_url,content)
     return render_template('home.html', headlines = headlines)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
