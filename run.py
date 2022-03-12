@@ -28,6 +28,7 @@ def index():
     image = []
     publication_date = []
     news_url = []
+    content= []
 
 
     '''
@@ -42,10 +43,12 @@ def index():
         image.append(main_highlight['urlToImage'])  #Append the urlToImage into the list.
         publication_date.append(main_highlight['publishedAt'])  #Append the published date into the list.
         news_url.append(main_highlight['url'])  #Append the url into the list.
+        content.append(main_highlight['content'])
+
 
 #To store the contents gotten above.
-        contents = zip(news, descriptions,image,publication_date,news_url)
-
+        headlines = zip(title, author, descriptions,image,publication_date,news_url, content)
+    return render_template('home.html', headlines = headlines)
 
 if __name__ == '__main__':
     app.run(debug=True)
