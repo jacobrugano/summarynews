@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
+        {% for title,descriptions,image,publication_date,news_url in all %}
+        <div>
+            <div href="{{news_url}}"><img src="{{image}}"></div>
+            <div ><a href="{{news_url}}"><h2 >{{descriptions}}</p></div>
+            <div>Publication date:- </p><p> {{publication_date}} </p></div>
+            <div>Published by: <p>"{{author}}"</p> </div>
+            </div>
+            </div> 
+        {% endfor %}
+    </div> 
+</body>
+</html>
