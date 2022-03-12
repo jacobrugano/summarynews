@@ -4,16 +4,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BBC NEWS</title>
+    
 </head>
 <body>
+    <section>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" id="login" href="/login">Login</a>
+                <a class="nav-item nav-link" id="signUp" href="/sign-up">Sign Up</a>
+                <a class="nav-item nav-link" id="home" href="/">All pitches</a>
+                <a class="nav-item nav-link" id="home" href="/">Interview pitch</a>
+                <a class="nav-item nav-link" id="home" href="/">Product pitch</a>
+                <a class="nav-item nav-link" id="home" href="/">Promotion pitch</a>
+            
+              </div>
+            </div>
+          </nav>
+      
+    </section>
     <section>
         <div>
             <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
             {% for title,author,descriptions,image,publication_date,news_url,content in headlines %}
             <div>
                 <div><a href="{{news_url}}"><img src="{{image}}"></a></div>
-                <div><a href="{{news_url}}"><h2>{{title}}</h2></a></div>
-                <div class="content"><p>{{descriptions}}</p></div>
+                  <div class="content"><p>{{descriptions}}</p></div>
                 <div class="content"><p>Publication date:-</p><p> {{publication_date}} </p></div>
                 <div>Published by: <p>"{{author}}"</p></div>
             </div> 
