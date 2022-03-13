@@ -193,6 +193,53 @@ def bloomberg():
         bloomhighlights = zip(bloom_title,bloom_descriptions,bloom_image,bloom_publication_date,bloom_news_url)
     return render_template('bloomberg.html', bloomhighlights = bloomhighlights)
 
+
+#Create a route function and render the html file.
+@app.route("/cbcnews")
+def cbcnews():
+
+    '''
+    A root page function that returns info on the index file.
+    '''
+    newsapi = NewsApiClient(api_key="44216e90102b4e7bbc548343f8cdc3ea")
+    
+    #Code-block for getting the top stories from the API
+    '''
+    Code to get the summary of top headlines
+    '''
+    topheadlines = newsapi.get_top_headlines(sources = "cbc-news") #source to help us from where to get the news by API.
+    cbcheadlines = topheadlines['articles']
+
+    '''
+    A list of the items to display on our application
+    '''
+    cbc_title = []
+    cbc_descriptions = []
+    cbc_image = []
+    cbc_publication_date = []
+    cbc_news_url = []
+
+
+    '''
+    Code block using a for-loop to fetch the contents of articles.
+    '''
+    for i in range(len(cbcheadlines)): 
+        cbc_mainhighlight = cbcheadlines[i]
+
+        cbc_title.append(cbc_mainhighlight['title'])  #To append the title into the list.
+        cbc_descriptions.append(cbc_mainhighlight['description'])  #To append the description into the list.
+        cbc_image.append(cbc_mainhighlight['urlToImage'])  #Append the urlToImage into the list.
+        cbc_publication_date.append(cbc_mainhighlight['publishedAt'])  #Append the published date into the list.
+        cbc_news_url.append(cbc_mainhighlight['url'])  #Append the url into the list.
+
+        '''
+        To store the contents gotten above.
+        '''
+        cbchighlights = zip(cbc_title,cbc_descriptions,cbc_image,cbc_publication_date,cbc_news_url)
+    return render_template('cbcnews.html', cbchighlights = cbchighlights)
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
