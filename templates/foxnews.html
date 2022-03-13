@@ -53,12 +53,12 @@
         <section>
             <div>
                 <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
-                {% for cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url in ccontents %}
+                {% for fox_title,fox_descriptions,fox_image,fox_publication_date,fox_news_url in foxhighlights %}
                 <div>
-                    <div><h2>{{cnn_title}}</h2></a></div>
-                    <div><a href="{{cnn_news_url}}"><img src="{{cnn_image}}"></a></div>
-                    <div class="content"><p>{{cnn_descriptions}}</p></div>
-                    <div class="content"><p>Publication date:-</p><p> {{cnn_publication_date}} </p></div>
+                    <div><h2>{{fox_title}}</h2></a></div>
+                    <div><a href="{{fox_news_url}}"><img src="{{fox_image}}"></a></div>
+                    <div class="content"><p>{{fox_descriptions}}</p></div>
+                    <div class="content"><p>Publication date:-</p><p> {{fox_publication_date}} </p></div>
                     <!-- <div>Published by: <p>"{{cnn_author}}"</p></div> -->
                 </div> 
                 {% endfor %}
