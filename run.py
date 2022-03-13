@@ -239,6 +239,51 @@ def cbcnews():
     return render_template('cbcnews.html', cbchighlights = cbchighlights)
 
 
+#Create a route function and render the html file.
+@app.route("/foxnews")
+def foxnews():
+
+    '''
+    A root page function that returns info on the index file.
+    '''
+    newsapi = NewsApiClient(api_key="44216e90102b4e7bbc548343f8cdc3ea")
+    
+    #Code-block for getting the top stories from the API
+    '''
+    Code to get the summary of top headlines
+    '''
+    topheadlines = newsapi.get_top_headlines(sources = "the-washington-post") #source to help us from where to get the news by API.
+    foxheadlines = topheadlines['articles']
+
+    '''
+    A list of the items to display on our application
+    '''
+    fox_title = []
+    fox_descriptions = []
+    fox_image = []
+    fox_publication_date = []
+    fox_news_url = []
+
+
+    '''
+    Code block using a for-loop to fetch the contents of articles.
+    '''
+    for i in range(len(foxheadlines)): 
+        fox_mainhighlight = foxheadlines[i]
+
+        fox_title.append(fox_mainhighlight['title'])  #To append the title into the list.
+        fox_descriptions.append(fox_mainhighlight['description'])  #To append the description into the list.
+        fox_image.append(fox_mainhighlight['urlToImage'])  #Append the urlToImage into the list.
+        fox_publication_date.append(fox_mainhighlight['publishedAt'])  #Append the published date into the list.
+        fox_news_url.append(fox_mainhighlight['url'])  #Append the url into the list.
+
+        '''
+        To store the contents gotten above.
+        '''
+        foxhighlights = zip(fox_title,fox_descriptions,fox_image,fox_publication_date,fox_news_url)
+    return render_template('foxnews.html', foxhighlights = foxhighlights)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
