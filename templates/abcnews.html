@@ -53,13 +53,12 @@
         <section>
             <div>
                 <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
-                {% for abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url in abc_headlines %}
+                {% for abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url in abchighlights %}
                 <div>
                     <div><h2>{{abc_title}}</h2></a></div>
                     <div><a href="{{abc_news_url}}"><img src="{{abc_image}}"></a></div>
                     <div class="content"><p>{{abc_descriptions}}</p></div>
                     <div class="content"><p>Publication date:-</p><p> {{abc_publication_date}} </p></div>
-                    <!-- <div>Published by: <p>"{{cnn_author}}"</p></div> -->
                 </div> 
                 {% endfor %}
             </div>

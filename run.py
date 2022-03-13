@@ -105,8 +105,8 @@ def cnn():
 
 
 #Create a route function and render the html file.
-@app.route("/abcnews")
-def index():
+@app.route("/abc")
+def abc():
 
     '''
     A root page function that returns info on the index file.
@@ -118,7 +118,7 @@ def index():
     Code to get the summary of top headlines
     '''
     topheadlines = newsapi.get_top_headlines(sources = "abc-news") #source to help us from where to get the news by API.
-    abc_headlines = topheadlines['articles']
+    abcheadlines = topheadlines['articles']
 
     '''
     A list of the items to display on our application
@@ -134,23 +134,20 @@ def index():
     '''
     Code block using a for-loop to fetch the contents of articles.
     '''
-    for i in range(len(abc_headlines)): 
-        abc_main_highlight = abc_headlines[i]
+    for i in range(len(abcheadlines)): 
+        abc_mainhighlight = abcheadlines[i]
 
-        abc_title.append(abc_main_highlight['title'])  #To append the title into the list.
-        # abc_author.append(abc_main_highlight['author'])
-        abc_descriptions.append(abc_main_highlight['description'])  #To append the description into the list.
-        abc_image.append(abc_main_highlight['urlToImage'])  #Append the urlToImage into the list.
-        abc_publication_date.append(abc_main_highlight['publishedAt'])  #Append the published date into the list.
-        abc_news_url.append(abc_main_highlight['url'])  #Append the url into the list.
-        # content.append(abc_main_highlight['content'])
-
+        abc_title.append(abc_mainhighlight['title'])  #To append the title into the list.
+        abc_descriptions.append(abc_mainhighlight['description'])  #To append the description into the list.
+        abc_image.append(abc_mainhighlight['urlToImage'])  #Append the urlToImage into the list.
+        abc_publication_date.append(abc_mainhighlight['publishedAt'])  #Append the published date into the list.
+        abc_news_url.append(abc_mainhighlight['url'])  #Append the url into the list.
 
         '''
         To store the contents gotten above.
         '''
-        abc_headlines = zip(abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url)
-    return render_template('home.html', abc_headlines = abc_headlines)
+        abchighlights = zip(abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url)
+    return render_template('abcnews.html', abchighlights = abchighlights)
 
 if __name__ == '__main__':
     app.run(debug=True)
