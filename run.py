@@ -149,6 +149,51 @@ def abc():
         abchighlights = zip(abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url)
     return render_template('abcnews.html', abchighlights = abchighlights)
 
+#Create a route function and render the html file.
+@app.route("/bloomberg")
+def bloomberg():
+
+    '''
+    A root page function that returns info on the index file.
+    '''
+    newsapi = NewsApiClient(api_key="44216e90102b4e7bbc548343f8cdc3ea")
+    
+    #Code-block for getting the top stories from the API
+    '''
+    Code to get the summary of top headlines
+    '''
+    topheadlines = newsapi.get_top_headlines(sources = "bloomberg") #source to help us from where to get the news by API.
+    bloomheadlines = topheadlines['articles']
+
+    '''
+    A list of the items to display on our application
+    '''
+    bloom_title = []
+    bloom_descriptions = []
+    bloom_image = []
+    bloom_publication_date = []
+    bloom_news_url = []
+    # content= []
+
+
+    '''
+    Code block using a for-loop to fetch the contents of articles.
+    '''
+    for i in range(len(bloomheadlines)): 
+        bloom_mainhighlight = bloomheadlines[i]
+
+        bloom_title.append(bloom_mainhighlight['title'])  #To append the title into the list.
+        bloom_descriptions.append(bloom_mainhighlight['description'])  #To append the description into the list.
+        bloom_image.append(bloom_mainhighlight['urlToImage'])  #Append the urlToImage into the list.
+        bloom_publication_date.append(bloom_mainhighlight['publishedAt'])  #Append the published date into the list.
+        bloom_news_url.append(bloom_mainhighlight['url'])  #Append the url into the list.
+
+        '''
+        To store the contents gotten above.
+        '''
+        bloomhighlights = zip(bloom_title,bloom_descriptions,bloom_image,bloom_publication_date,bloom_news_url)
+    return render_template('abcnews.html', bloomhighlights = bloomhighlights)
+
 if __name__ == '__main__':
     app.run(debug=True)
 
