@@ -149,7 +149,7 @@ def index():
         '''
         To store the contents gotten above.
         '''
-        headlines = zip(abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url)
+        abc_headlines = zip(abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url)
     return render_template('home.html', abc_headlines = abc_headlines)
 
 if __name__ == '__main__':
