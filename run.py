@@ -70,7 +70,7 @@ def cnn():
     code-block to fetch headlines
     '''
     c_articles = all_articles['articles']
-    
+
     '''
     We make a list of the items to display on our application
     '''
@@ -104,6 +104,53 @@ def cnn():
         return render_template('cnn.html', ccontents=ccontents)
 
 
+#Create a route function and render the html file.
+@app.route("/abcnews")
+def index():
+
+    '''
+    A root page function that returns info on the index file.
+    '''
+    newsapi = NewsApiClient(api_key="44216e90102b4e7bbc548343f8cdc3ea")
+    
+    #Code-block for getting the top stories from the API
+    '''
+    Code to get the summary of top headlines
+    '''
+    topheadlines = newsapi.get_top_headlines(sources = "abc-news") #source to help us from where to get the news by API.
+    abc_headlines = topheadlines['articles']
+
+    '''
+    A list of the items to display on our application
+    '''
+    abc_title = []
+    abc_descriptions = []
+    abc_image = []
+    abc_publication_date = []
+    abc_news_url = []
+    # content= []
+
+
+    '''
+    Code block using a for-loop to fetch the contents of articles.
+    '''
+    for i in range(len(abc_headlines)): 
+        abc_main_highlight = abc_headlines[i]
+
+        abc_title.append(abc_main_highlight['title'])  #To append the title into the list.
+        # abc_author.append(abc_main_highlight['author'])
+        abc_descriptions.append(abc_main_highlight['description'])  #To append the description into the list.
+        abc_image.append(abc_main_highlight['urlToImage'])  #Append the urlToImage into the list.
+        abc_publication_date.append(abc_main_highlight['publishedAt'])  #Append the published date into the list.
+        abc_news_url.append(abc_main_highlight['url'])  #Append the url into the list.
+        # content.append(abc_main_highlight['content'])
+
+
+        '''
+        To store the contents gotten above.
+        '''
+        headlines = zip(abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url)
+    return render_template('home.html', abc_headlines = abc_headlines)
 
 if __name__ == '__main__':
     app.run(debug=True)
