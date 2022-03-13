@@ -162,7 +162,7 @@ def bloomberg():
     '''
     Code to get the summary of top headlines
     '''
-    topheadlines = newsapi.get_top_headlines(sources = "bloomberg") #source to help us from where to get the news by API.
+    topheadlines = newsapi.get_top_headlines(sources = "usa-today") #source to help us from where to get the news by API.
     bloomheadlines = topheadlines['articles']
 
     '''
@@ -173,7 +173,6 @@ def bloomberg():
     bloom_image = []
     bloom_publication_date = []
     bloom_news_url = []
-    # content= []
 
 
     '''
@@ -192,7 +191,7 @@ def bloomberg():
         To store the contents gotten above.
         '''
         bloomhighlights = zip(bloom_title,bloom_descriptions,bloom_image,bloom_publication_date,bloom_news_url)
-    return render_template('abcnews.html', bloomhighlights = bloomhighlights)
+    return render_template('bloomberg.html', bloomhighlights = bloomhighlights)
 
 if __name__ == '__main__':
     app.run(debug=True)
