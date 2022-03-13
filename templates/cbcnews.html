@@ -39,7 +39,7 @@
                     <a class="dropdown-item" href="/cnn">CNN News</a>
                     <a class="dropdown-item" href="/abc">ABC News</a>
                     <a class="dropdown-item" href="/bloomberg">Bloomberg</a>
-                    <a class="dropdown-item" href="/cbc">CBC News</a>
+                    <a class="dropdown-item" href="/cbcnews">CBC News</a>
                     <a class="dropdown-item" href="/foxnews">Fox News</a>
                     <a class="dropdown-item" href="/foxsports">Fox Sports</a>
                     <a class="dropdown-item" href="/google">Google News</a>
@@ -53,12 +53,12 @@
         <section>
             <div>
                 <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
-                {% for cnn_title,cnn_descriptions,cnn_image,cnn_publication_date,cnn_news_url in ccontents %}
+                {% for cbc_title,cbc_descriptions,cbc_image,cbc_publication_date,cbc_news_url in cbchighlights %}
                 <div>
-                    <div><h2>{{cnn_title}}</h2></a></div>
-                    <div><a href="{{cnn_news_url}}"><img src="{{cnn_image}}"></a></div>
-                    <div class="content"><p>{{cnn_descriptions}}</p></div>
-                    <div class="content"><p>Publication date:-</p><p> {{cnn_publication_date}} </p></div>
+                    <div><h2>{{cbc_title}}</h2></a></div>
+                    <div><a href="{{cbc_news_url}}"><img src="{{cbc_image}}"></a></div>
+                    <div class="content"><p>{{cbc_descriptions}}</p></div>
+                    <div class="content"><p>Publication date:-</p><p> {{cbc_publication_date}} </p></div>
                     <!-- <div>Published by: <p>"{{cnn_author}}"</p></div> -->
                 </div> 
                 {% endfor %}

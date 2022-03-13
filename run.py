@@ -207,7 +207,7 @@ def cbcnews():
     '''
     Code to get the summary of top headlines
     '''
-    topheadlines = newsapi.get_top_headlines(sources = "cbc-news") #source to help us from where to get the news by API.
+    topheadlines = newsapi.get_top_headlines(sources = "google-news") #source to help us from where to get the news by API.
     cbcheadlines = topheadlines['articles']
 
     '''
