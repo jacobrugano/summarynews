@@ -41,9 +41,6 @@
                     <a class="dropdown-item" href="/bloomberg">Bloomberg</a>
                     <a class="dropdown-item" href="/cbcnews">CBC News</a>
                     <a class="dropdown-item" href="/foxnews">Fox News</a>
-                    <a class="dropdown-item" href="/foxsports">Fox Sports</a>
-                    <a class="dropdown-item" href="/google">Google News</a>
-                    <a class="dropdown-item" href="/tech">Tech Crunch</a>
                   </div>
               </li>
             </ul>
@@ -51,14 +48,14 @@
       
     </section>
         <section>
-            <div>
+            <div class="wrapper">
                 <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
                 {% for fox_title,fox_descriptions,fox_image,fox_publication_date,fox_news_url in foxhighlights %}
                 <div>
-                    <div><h2>{{fox_title}}</h2></a></div>
-                    <div><a href="{{fox_news_url}}"><img src="{{fox_image}}"></a></div>
-                    <div class="content"><p>{{fox_descriptions}}</p></div>
-                    <div class="content"><p>Publication date:-</p><p> {{fox_publication_date}} </p></div>
+                    <div><h2  class="content" style="color: rgb(0, 0, 0);font-size: 25px;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{fox_title}}</h2></a></div>
+                    <div><a href="{{fox_news_url}}"><img src="{{fox_image}}"  style="height: 60%;width: 60%; border-radius: 20px; box-shadow: 10px 10px 10px rgba(37, 1, 1, 0.4); padding: 0.5px;"></a></div>
+                    <div class="content"><p style="color: rgb(8, 8, 8);font-size: 15px;font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{fox_descriptions}}</p></div>
+                    <div class="content"><p style="color:rgb(18, 19, 17);">Publication date:-</p><p> {{fox_publication_date}} </p></div>
                     <!-- <div>Published by: <p>"{{cnn_author}}"</p></div> -->
                 </div> 
                 {% endfor %}
