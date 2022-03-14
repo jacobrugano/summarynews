@@ -54,15 +54,34 @@
             <div>
                 <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
                 {% for abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url in abchighlights %}
-                <div>
-                    <div><h2>{{abc_title}}</h2></a></div>
-                    <div><a href="{{abc_news_url}}"><img src="{{abc_image}}"></a></div>
-                    <div class="content"><p>{{abc_descriptions}}</p></div>
-                    <div class="content"><p>Publication date:-</p><p> {{abc_publication_date}} </p></div>
+                <div class="wrapper">
+                    <div><h2 class="content" style="color: rgb(0, 0, 0);font-size: 25px;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;" >{{abc_title}}</h2></a></div>
+                    <div><a href="{{abc_news_url}}" ><img src="{{abc_image}}" style="height: 60%;width: 60%; border-radius: 20px; box-shadow: 10px 10px 10px rgba(37, 1, 1, 0.4); padding: 0.5px;"></a></div>
+                    <div class="content" style="color: rgb(0, 0, 0);font-size: 15px;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"><p>{{abc_descriptions}}</p></div>
+                    <div class="content"><p style="color:rgb(18, 19, 17);" >Publication date:-</p><p style="color: rgb(8, 8, 8);font-size: 15px;font-weight: bold; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> {{abc_publication_date}} </p></div>
                 </div> 
                 {% endfor %}
             </div>
         </section>
+        <!-- <section>
+          <div>
+              <div class = "head2"><strong> TODAY'S TOP HEADLINES</strong></div>
+              {% for abc_title,abc_descriptions,abc_image,abc_publication_date,abc_news_url in abchighlights %}
+              <div class="wrapper" style="height: 400px; width: 100%; display: flex;
+              align-items: center;  padding: 10px; justify-content: space-between; background-color: rg 47, 47;">
+                  <div class="item" style="height: 300px; min-width: 30%;  border-radius: 20px;
+                  margin: 10px; box-shadow: 10px 10px 10px rgba(37, 1, 1, 0.4); padding: 0.5px;
+                  flex-flow: column wrap; border-bottom: 1px rgb(8, 8, 8);"><a href="{{news_url}}"><img src="{{image}}" style="height: 100%;width: 100%;"></a></div>
+                    <div class = "c-box">
+                    <div  class="content"><p style="color: rgb(0, 0, 0);font-size: 15px;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"><p>{{descriptions}}</p></div>
+                  <div class="content"><p style="color:rgb(18, 19, 17);"><p>Publication date:-</p><p style="color: rgb(8, 8, 8);font-size: 15px;font-weight: bold;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> {{publication_date}} </p></div>
+                  <div>Published by: <p>"{{author}}"</p>
+                  </div>
+                  </div>
+              </div> 
+              {% endfor %}
+          </div>
+      </section> -->
     <script
     src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

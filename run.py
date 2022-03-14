@@ -128,7 +128,7 @@ def abc():
     abc_image = []
     abc_publication_date = []
     abc_news_url = []
-    # content= []
+    # abccontent= []
 
 
     '''
